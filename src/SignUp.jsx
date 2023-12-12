@@ -1,11 +1,15 @@
 import React from "react";
 import { Button ,Card,TextField} from "@mui/material";
-
+import {useState} from "react"
 
 
 const SignUp = () => {
+    const [email, setEmail] = useState("")
+    const [password, setPassword] = useState("")
   return (
     <div >
+        {/* <h1>{email}</h1>
+        <h1>{password}</h1> */}
       <div>
         <div
           style={{
@@ -31,13 +35,15 @@ const SignUp = () => {
           fullWidth={true}
           label="Email"
           variant="outlined"
-          type="text" />
+          type="text" 
+          onChange={(e)=> setEmail(e.target.value)}/>
           <br /> <br />
           <TextField id={"password" }
           fullWidth={true}
           label="Password"
           variant="outlined"
-          type={"password"} />
+          type={"password"}
+          onChange={(e)=> setPassword(e.target.value)} />
           <br />
           <br />
           <Button style={{backgroundColor:"#2196F3",
@@ -45,14 +51,13 @@ const SignUp = () => {
         
         onClick={()=>{
             // let element = document.getElementById("username")
-            let username = document.getElementById("username").value
-            let password = document.getElementById("password").value
+            
             // console.log(element.value);
             fetch("http://localhost:3000/admin/signup",{
                 method:"POST",
                 body: JSON.stringify({
-                    username,
-                    password
+                    username:email,
+                    password:password
                 }),
                 headers:{
                     "Content-type":"application/json"
@@ -61,7 +66,10 @@ const SignUp = () => {
                 return res.json()
 
             }).then((data)=>{
-                console.log(data);
+                // console.log(data);
+                //store token in local storage of browser
+                localStorage.setItem("token", data.token)
+                // console.log(data.token);
             })
            
         }}
