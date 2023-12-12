@@ -1,33 +1,49 @@
 import React from "react";
-import { Button } from "@mui/material";
+import { Button ,Card,TextField} from "@mui/material";
+
+
+
 const SignUp = () => {
   return (
-    <div>
-      <center>
+    <div >
+      <div>
         <div
           style={{
-            marginTop: 150,
+            paddingTop:150,
             marginBottom: 10,
+            display:"flex",
+            justifyContent:"center"
           }}
         >
           Welcome To Coursera
         </div>
-      </center>
-      <center>
-        <div
-          style={{
-            border: "2px solid black",
-            width: 400,
-          }}
+      </div>
+      <div style={{
+        display:"flex",
+        justifyContent:"center"
+      }}>
+        <Card
+          variant={"outlined"}
+          style={{width:400, padding:20, border:"2px solid black"}}
         >
-          Username
-          <input type="text" />
           <br />
-          Password <input type="password" />
+          <TextField id="outline-basic"
+          fullWidth={true}
+          label="Email"
+          variant="outlined"
+          type="text" />
+          <br /> <br />
+          <TextField id="outline-basic" 
+          fullWidth={true}
+          label="Password"
+          variant="outlined"
+          type={"password"} />
           <br />
-          <Button>Sign Up</Button>
-        </div>
-      </center>
+          <br />
+          <Button style={{backgroundColor:"#2196F3",
+        color:"white"}}>Sign Up</Button>
+        </Card>
+      </div>
     </div>
   );
 };
