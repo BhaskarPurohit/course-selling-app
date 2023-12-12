@@ -1,5 +1,5 @@
 import React from "react";
-
+import { Button } from "@mui/material";
 const SignUp = () => {
   return (
     <div>
@@ -25,7 +25,7 @@ const SignUp = () => {
           <br />
           Password <input type="password" />
           <br />
-          <button>Sign Up</button>
+          <Button>Sign Up</Button>
         </div>
       </center>
     </div>
