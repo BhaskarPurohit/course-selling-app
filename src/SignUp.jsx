@@ -27,13 +27,13 @@ const SignUp = () => {
           style={{width:400, padding:20, border:"2px solid black"}}
         >
           <br />
-          <TextField id="outline-basic"
+          <TextField id={"username"}
           fullWidth={true}
           label="Email"
           variant="outlined"
           type="text" />
           <br /> <br />
-          <TextField id="outline-basic" 
+          <TextField id={"password" }
           fullWidth={true}
           label="Password"
           variant="outlined"
@@ -41,7 +41,31 @@ const SignUp = () => {
           <br />
           <br />
           <Button style={{backgroundColor:"#2196F3",
-        color:"white"}}>Sign Up</Button>
+        color:"white"}} size={"large"} variant="contained"
+        
+        onClick={()=>{
+            // let element = document.getElementById("username")
+            let username = document.getElementById("username").value
+            let password = document.getElementById("password").value
+            // console.log(element.value);
+            fetch("http://localhost:3000/admin/signup",{
+                method:"POST",
+                body: JSON.stringify({
+                    username,
+                    password
+                }),
+                headers:{
+                    "Content-type":"application/json"
+                }
+            }).then((res)=>{
+                return res.json()
+
+            }).then((data)=>{
+                console.log(data);
+            })
+           
+        }}
+             >Sign Up</Button>
         </Card>
       </div>
     </div>
